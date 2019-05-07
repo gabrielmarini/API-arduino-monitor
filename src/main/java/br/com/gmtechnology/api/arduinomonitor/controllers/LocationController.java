@@ -45,4 +45,11 @@ public class LocationController {
         val locaion = convert.map(service.update(document), LocationDTO.class);
         return ResponseEntity.ok(locaion);
     }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<LocationDTO> findById(@PathVariable("id") String id) {
+        val document = service.findOne(id);
+        val location = convert.map(document, LocationDTO.class);
+        return ResponseEntity.ok(location);
+    }
 }
